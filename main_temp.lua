@@ -1,59 +1,4 @@
--- Reste à faire: 
---                01) nettoyer le code des fichiers utils et outils (ne garder que outils.lua qui est déjà chargé dans mod.modules).
---                02) créer un nouveau plan de décor pour afficher les cahutes par dessus le spawn des soldats.
---                03) rendre la grenade fonctionnelle.
---                04) revoir la création des entités du jeu avec la fonction transform.
---                05) améliorer le code des scènes de victoire et de défaite.
---                06) ajouter les fonctions de debug.
---                07) transformer la fonction de création de l'explosion dans outils.lua en fonction de création d'animlations.
---                08) coulure de sang sur la scène de défaite.
---                09) faire des assets plus jolis.
---                10) ajouter des sons et des musiques.
---                11) supprimer main_temp.lua et l'ancienne version du code du jeu du main.lua.
-
 io.stdout:setvbuf('no')
-if arg[arg] == "-debug" then require("mobdebug").start() end
-love.graphics.setDefaultFilter("nearest")
-
-love.window.setTitle("LaJamHaHaTo")
-
-largeur = love.graphics.getWidth()
-hauteur = love.graphics.getHeight()
-
-require("mod.modules")
-
-function love.load()
-  game:Load()
-end
-
-function love.update(dt)
-  game:Update(dt)
-end
-
-function love.draw()
-  game:Draw()
-end
-
-function love.keypressed(key)
-  game:Keypressed(key)
-  
-  if key == "f" then
-    love.window.setFullscreen(true)
-  end
-  if key == "d" then
-    game.debugage = not game.debugage
-  end
-  if key == "q" then
-    --love.event.quit()
-  end
-  
-end
-
-function love.mousepressed(x, y, button)
-  game:Mousepressed(x, y, button)
-end
-
---[[io.stdout:setvbuf('no')
 if arg[arg] == "-debug" then require("mobdebug").start() end
 love.graphics.setDefaultFilter("nearest")
 
@@ -632,4 +577,36 @@ function love.mousepressed(x, y, button)
     bras_g.tourne = true
     grenade.launch = true
   end
+end
+
+--[[io.stdout:setvbuf('no')
+if arg[arg] == "-debug" then require("mobdebug").start() end
+love.graphics.setDefaultFilter("nearest")
+
+love.window.setTitle("LaJamHaHaTo")
+  
+largeur = love.graphics.getWidth()
+hauteur = love.graphics.getHeight()
+
+require "game"
+require "utils"
+
+function love.load()
+  game:Load()
+end
+
+function love.update(dt)
+  game:Update(dt)
+end
+
+function love.draw()
+  game:Draw()
+end
+
+function love.keypressed(key)
+  game:Keypressed(key)
+end
+
+function love.mousepressed(x, y, button)
+  game:Mousepressed(x, y, button)
 end]]
